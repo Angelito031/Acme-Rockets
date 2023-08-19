@@ -16,9 +16,11 @@ const Header = () => {
           <button
             id="hamburger-button"
             onClick={toggleMobileMenu}
-            className="text-3xl md:hidden focus:outline-none cursor-pointer"
+            className={`text-3xl md:hidden focus:outline-none cursor-pointer relative w-8 h-8 ${
+              isMobileMenuOpen ? "toggle-btn" : ""
+            }`}
           >
-            &#9776;
+            <div className="bg-white w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 before:content-[''] before:bg-white before:w-8 before:h-1 before:rounded before:absolute before:-translate-x-4 before:-translate-y-3 before:transition-all before:duration-500 after:content-[''] after:bg-white after:w-8 after:h-1 after:rounded after:absolute after:-translate-x-4 after:translate-y-3 after:transition-all after:duration-500"></div>
           </button>
           <nav className="hidden md:block space-x-8 text-xl" aria-label="main">
             <a href="#rockets" className="hover:opacity-90">
@@ -35,13 +37,10 @@ const Header = () => {
       </section>
       <section
         id="mobile-menu"
-        className={`absolute top-0 bg-black w-full text-white text-5xl flex-col justify-center origin-top animate-open-menu ${
+        className={`absolute top-68 bg-black w-full text-white text-5xl flex-col justify-center origin-top animate-open-menu ${
           isMobileMenuOpen ? "flex" : "hidden"
         }`}
       >
-        <button onClick={toggleMobileMenu} className="text-8xl self-end px-6">
-          &times;
-        </button>
         <nav
           className="flex flex-col min-h-screen items-center py-8"
           aria-label="mobile"
